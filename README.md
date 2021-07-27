@@ -11,5 +11,6 @@ At the moment, a few issues exist with the current code in `index.js`.
     - Action items: 
         - When user submits the search form, select and return the value of the input.
         - Dynamically apply the input value to the endpoint currently passed to fetch.
+        - The fetch request should only happen after the form is submitted
 
 2. Open index.html in the browser and inspect the console to see if the anticipated data is being received from the request. Review the fetch request to identify the code that needs to be fixed. 
