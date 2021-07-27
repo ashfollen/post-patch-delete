@@ -54,19 +54,16 @@ function deletePokemon(e) {
 
 function increaseLike(e) {
   const likesElement = e.target.previousElementSibling;
-  const id = e.target.parentElement.dataset.id
-  const updatedLikes = parseInt(likesElement.textContent) + 1
+  const id = e.target.parentElement.dataset.id;
+  const updatedLikes = parseInt(likesElement.textContent) + 1;
+  likesElement.textContent = updatedLikes;
   fetch(`http://localhost:3000/pokemons/${id}`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({likes: updatedLikes})
-  })
-  .then(resp => resp.json())
-  .then(pokemon => {
-    likesElement.textContent = pokemon.likes
-  })
+    body: JSON.stringify({ likes: updatedLikes }),
+  });
 }
 
 function createPoke(e) {
