@@ -37,7 +37,7 @@ img {
   float: left;
   text-align: center;
   width: 100px;
-  height: 250px;
+  height: 275px;
 }
 
 .poke-card:hover {
@@ -81,4 +81,25 @@ label {
   margin-top: 25px;
   display: flex;
   justify-content: center;
+}
+
+.like-bttn {
+  color: red;
+  font-size: larger;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.like-bttn:hover {
+  color: white;
+  background-color: red;
+}
+
+.delete-bttn {
+  color: red;
+  font-size: large;
+}
+
+.delete-bttn:hover {
+  background-color: pink;
 }

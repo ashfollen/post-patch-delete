@@ -22,7 +22,7 @@ function renderPoke(pokemon) {
 
   const likeBttn = document.createElement("button");
   likeBttn.className = "like-bttn";
-  likeBttn.textContent = "<3";
+  likeBttn.textContent = "♥";
   likeBttn.addEventListener("click", increaseLike);
   
   const deleteBttn = document.createElement("button");
