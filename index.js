@@ -17,15 +17,19 @@ function renderPoke(pokemon) {
   pokeLikes.textContent = "Likes: ";
 
   const likesNum = document.createElement("h5");
-  likesNum.id = "like-num";
+  likesNum.className = "like-num";
   likesNum.textContent = pokemon.likes;
 
-  const bttn = document.createElement("button");
-  bttn.id = "like-bttn";
-  bttn.textContent = "<3";
-  bttn.addEventListener("click", increaseLike);
+  const likeBttn = document.createElement("button");
+  likeBttn.className = "like-bttn";
+  likeBttn.textContent = "<3";
+  likeBttn.addEventListener("click", increaseLike);
+  
+  const deleteBttn = document.createElement("button");
+  deleteBttn.className = "delete-bttn";
+  deleteBttn.textContent = "Delete";
 
-  pokeCard.append(pokeImg, pokeName, pokeLikes, likesNum, bttn);
+  pokeCard.append(pokeImg, pokeName, pokeLikes, likesNum, likeBttn, deleteBttn);
   pokeContainer.appendChild(pokeCard);
 }
 
