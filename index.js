@@ -5,6 +5,7 @@ function renderPoke(pokemon) {
   const pokeCard = document.createElement("div");
   pokeCard.id = `poke-${pokemon.id}`;
   pokeCard.className = "poke-card";
+  pokeCard.dataset.id = pokemon.id
 
   const pokeImg = document.createElement("img");
   pokeImg.src = pokemon.img;
@@ -17,16 +18,30 @@ function renderPoke(pokemon) {
   pokeLikes.textContent = "Likes: ";
 
   const likesNum = document.createElement("h5");
-  likesNum.id = "like-num";
+  likesNum.className = "like-num";
   likesNum.textContent = pokemon.likes;
 
-  const bttn = document.createElement("button");
-  bttn.id = "like-bttn";
-  bttn.textContent = "<3";
-  bttn.addEventListener("click", increaseLike);
+  const likeBttn = document.createElement("button");
+  likeBttn.className = "like-bttn";
+  likeBttn.textContent = "<3";
+  likeBttn.addEventListener("click", increaseLike);
 
-  pokeCard.append(pokeImg, pokeName, pokeLikes, likesNum, bttn);
+  const deleteBttn = document.createElement("button")
+  deleteBttn.className = 'delete-bttn'
+  deleteBttn.textContent = 'Delete'
+  deleteBttn.addEventListener("click", deletePokemon);
+
+
+  pokeCard.append(pokeImg, pokeName, pokeLikes, likesNum, likeBttn, deleteBttn);
   pokeContainer.appendChild(pokeCard);
+}
+
+function deletePokemon(e){
+  e.target.parentElement.remove()
+  fetch(`http://localhost:3000/pokemons/${e.target.parentElement.dataset.id}`, {
+    method: 'DELETE'
+  })
+
 }
 
 function increaseLike(e) {
@@ -42,12 +57,22 @@ function createPoke(e){
 
   if (pokeName !== '' && pokeImg !== ''){
     const poke = {
-      id: 7, // hard coded can be changed to  be more dynamic
       name: pokeName,
       img: pokeImg,
       likes: 0
     }
-    renderPoke(poke)
+
+    const configObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(poke)
+    }
+ 
+    fetch('http://localhost:3000/pokemons', configObj)
+    .then(resp => resp.json())
+    .then(renderPoke)
     pokeForm.reset()
   } else {
     alert('Fill in the form!!!')
