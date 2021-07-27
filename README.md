@@ -1,6 +1,6 @@
 # Post, Patch, Delete with fetch
 
-Run `json-server --watch db.json` to access our mock API
+Run `json-server --watch db.json` to access the mock API
 
 Goals: 
     1. Create a new object and `POST` to the API
