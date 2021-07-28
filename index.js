@@ -5,7 +5,6 @@ function renderPoke(pokemon) {
   const pokeCard = document.createElement("div");
   pokeCard.id = `poke-${pokemon.id}`;
   pokeCard.className = "poke-card";
-  pokeCard.dataset.id = pokemon.id;
 
   const pokeImg = document.createElement("img");
   pokeImg.src = pokemon.img;
@@ -23,15 +22,15 @@ function renderPoke(pokemon) {
 
   const likeBttn = document.createElement("button");
   likeBttn.className = "like-bttn";
-  likeBttn.textContent = "<3";
-  likeBttn.addEventListener("click", increaseLike);
+  likeBttn.textContent = "♥";
+  likeBttn.addEventListener("click", () => increaseLike(pokemon));
 
   const br = document.createElement("br");
 
   const deleteBttn = document.createElement("button");
   deleteBttn.className = "delete-bttn";
   deleteBttn.textContent = "Delete";
-  deleteBttn.addEventListener("click", deletePokemon);
+  deleteBttn.addEventListener("click", () => deletePokemon(pokemon));
 
   pokeCard.append(
     pokeImg,
@@ -45,24 +44,22 @@ function renderPoke(pokemon) {
   pokeContainer.appendChild(pokeCard);
 }
 
-function deletePokemon(e) {
-  e.target.parentElement.remove();
-  fetch(`http://localhost:3000/pokemons/${e.target.parentElement.dataset.id}`, {
+function deletePokemon(pokemon) {
+  document.querySelector(`#poke-${pokemon.id}`).remove();
+  fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
     method: "DELETE",
   });
 }
 
-function increaseLike(e) {
-  const likesElement = e.target.previousElementSibling;
-  const id = e.target.parentElement.dataset.id;
-  const updatedLikes = parseInt(likesElement.textContent) + 1;
-  likesElement.textContent = updatedLikes;
-  fetch(`http://localhost:3000/pokemons/${id}`, {
+function increaseLike(pokemon) {
+  const likes = ++pokemon.likes;
+  event.target.previousElementSibling.textContent = likes;
+  fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ likes: updatedLikes }),
+    body: JSON.stringify({ likes: likes }),
   });
 }
 
