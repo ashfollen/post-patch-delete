@@ -24,7 +24,7 @@ function renderPoke(pokemon) {
   likeBttn.className = "like-bttn";
   likeBttn.textContent = "♥";
   likeBttn.addEventListener("click", increaseLike);
-  
+
   const deleteBttn = document.createElement("button");
   deleteBttn.className = "delete-bttn";
   deleteBttn.textContent = "Delete";

@@ -1,5 +1,4 @@
-#title,
-#exercise-details {
+#title {
   text-align: center;
 }
 
@@ -11,7 +10,7 @@
   border-width: 5px;
   width: 500px;
   height: 75px;
-  background-color: rgb(228, 215, 42);
+  background-color: #ffcb05;
   width: 50%;
   margin: 0 auto;
 }
@@ -29,7 +28,7 @@ img {
 
 .poke-card {
   border: solid;
-  border-color: rgb(228, 215, 42);
+  border-color: #ffcb05;
   padding: 50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -50,7 +49,7 @@ img {
   flex-wrap: wrap;
 }
 
-input[type="text"] {
+input[type="text"]:not(.edit-input) {
   padding: 10px;
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
@@ -70,7 +69,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: rgb(228, 215, 42);
+  background-color: #ffcb05;
 }
 
 label {
@@ -104,3 +103,4 @@ label {
 .delete-bttn:hover {
   background-color: pink;
 }
+
