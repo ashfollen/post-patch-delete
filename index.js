@@ -45,6 +45,7 @@ function renderPoke(pokemon) {
 }
 
 function deletePokemon(pokemon) {
+  confirm("Are you sure you want to delete this pokemon?");
   document.querySelector(`#poke-${pokemon.id}`).remove();
   fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
     method: "DELETE",
