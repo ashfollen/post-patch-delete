@@ -58,16 +58,10 @@ function createPoke(e) {
   }
 }
 
-function getPokemons() {
-  fetch("http://localhost:3000/pokemons")
-    .then((resp) => resp.json())
-    .then((pokemons) => {
-      pokemons.forEach(renderPoke);
-    });
-}
+// function getPokemons() {
+// }
 
 function init() {
-  getPokemons();
   pokeForm.addEventListener("submit", createPoke);
 }
 
