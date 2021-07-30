@@ -53,7 +53,7 @@ function deletePokemon(pokemon) {
 }
 
 function increaseLike(pokemon) {
-  const likes = ++pokemon.likes;
+  const likes = (pokemon.likes += 1);
   event.target.previousElementSibling.textContent = likes;
   fetch(`http://localhost:3000/pokemons/${pokemon.id}`, {
     method: "PATCH",
